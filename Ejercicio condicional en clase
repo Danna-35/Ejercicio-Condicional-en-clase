@@ -1,0 +1,69 @@
+using System;
+
+class ProgramaEdad
+{
+    static void Main()
+    {
+        // Encabezado decorativo
+        MostrarEncabezado();
+
+        // Solicitar datos personales
+        Console.Write("Ingrese su nombre: ");
+        string nombre = Console.ReadLine();
+
+        Console.Write("Ingrese su curso: ");
+        string curso = Console.ReadLine();
+
+        Console.Write("Ingrese la fecha (dd/mm/aaaa): ");
+        string fecha = Console.ReadLine();
+
+        Console.Write("Ingrese su edad: ");
+        string entrada = Console.ReadLine();
+        int edad;
+
+        // Validación de entrada numérica
+        if (!int.TryParse(entrada, out edad))
+        {
+            Console.WriteLine("Edad inválida. Debe ingresar un número entero.");
+            return;
+        }
+
+        // Determinar categoría
+        string categoria = ObtenerCategoriaEdad(edad);
+
+        // Mostrar resultado
+        MostrarResultado(nombre, curso, fecha, edad, categoria);
+    }
+
+    // Función para determinar la categoría de edad
+    static string ObtenerCategoriaEdad(int edad)
+    {
+        if (edad < 12)
+            return "Niño";
+        else if (edad < 18)
+            return "Adolescente";
+        else if (edad <= 65)
+            return "Adulto";
+        else
+            return "Adulto Mayor";
+    }
+
+    // Función para mostrar encabezado
+    static void MostrarEncabezado()
+    {
+        Console.WriteLine("=====================================");
+        Console.WriteLine("   PROGRAMA DE CATEGORÍA DE EDAD");
+        Console.WriteLine("=====================================\n");
+    }
+
+    // Función para mostrar los resultados
+    static void MostrarResultado(string nombre, string curso, string fecha, int edad, string categoria)
+    {
+        Console.WriteLine("\n------ RESULTADO ------");
+        Console.WriteLine($"Nombre     : {nombre}");
+        Console.WriteLine($"Curso      : {curso}");
+        Console.WriteLine($"Fecha      : {fecha}");
+        Console.WriteLine($"Edad       : {edad}");
+        Console.WriteLine($"Categoría  : {categoria}");
+    }
+}
